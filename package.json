@@ -1,0 +1,11 @@
+{
+  "name": "ui5-cc-chart",
+  "version": "0.0.0",
+  "description": "UI5 module",
+  "private": true,
+  "author": "UI5 Community",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "chart.js": "^3.7.1"
+  }
+}
