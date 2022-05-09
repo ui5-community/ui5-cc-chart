@@ -3,7 +3,10 @@ sap.ui.define(["sap/ui/core/Control", "chart.js/auto", "sap/ui/dom/includeStyles
     return Control.extend("ui5-cc-chart.Chart", {
         metadata: {
             properties: {
-                "type": "string",
+                "type": {
+                    type: "string",
+                    defaultValue: "line"
+                },
                 "title": "string",
                 "color": "sap.ui.core.CSSColor"
             },
