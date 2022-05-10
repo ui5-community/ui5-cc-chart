@@ -22,6 +22,7 @@
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@prettier/plugin-xml": "^2.1.0",
+    "beachball": "^2.22.2",
     "eslint": "^8.15.0",
     "husky": "^8.0.1",
     "lint-staged": "^12.4.1",
