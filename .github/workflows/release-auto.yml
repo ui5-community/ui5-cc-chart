@@ -11,7 +11,6 @@ env:
 jobs:
   release:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, 'chore(release): publish')"
     steps:
       - uses: actions/checkout@v2
         with:
