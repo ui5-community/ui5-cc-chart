@@ -14,9 +14,8 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "hooks:pre-commit": "npm-run-all --sequential prettier:staged lint:staged",
     "hooks:pre-push": "npm-run-all --sequential lint:commit",
-    "preversion": "npm run changelog",
-    "version": "git add --all",
-    "postversion": "git push && git push --tags"
+    "version": "npm run changelog && git add --all",
+    "version:publish": "git push && git push --tags"
   },
   "dependencies": {
     "chart.js": "^3.7.1"

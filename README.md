@@ -78,6 +78,18 @@ Please use the GitHub bug tracking system to post questions, bug reports or to c
 
 Any type of contribution (code contributions, pull requests, issues) to this showcase will be equally appreciated.
 
+## Releasing
+
+To release a new version of the package, you just need to run the following command:
+
+```sh
+# Release a new version of the package
+npm version [major|minor|patch]
+
+# Publish the package (push the change and the tag)
+npm run version:publish
+```
+
 ## License
 
 This work is [dual-licensed](../../LICENSE) under Apache 2.0 and the Derived Beer-ware License. The official license will be Apache 2.0 but finally you can choose between one of them if you use this work.
