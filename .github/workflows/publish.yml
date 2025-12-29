@@ -1,0 +1,54 @@
+name: Publish
+
+# Trigger on tag push AND manual trigger
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch: # Manual trigger
+
+permissions:
+  contents: read
+  id-token: write # REQUIRED for trusted publishing (OIDC)
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org/"
+
+      - name: Read package name
+        id: pkg
+        run: |
+          echo "NAME=$(jq -r '.name' package.json)" >> $GITHUB_ENV
+
+      - name: Decide publish method
+        run: |
+          if npm view "$NAME" > /dev/null 2>&1; then
+            echo "EXISTS=true" >> $GITHUB_ENV
+            echo "Package exists → using trusted publishing"
+          else
+            echo "EXISTS=false" >> $GITHUB_ENV
+            echo "Package does not exist → bootstrap publish"
+          fi
+
+      - name: Publish
+        env:
+          NPM_BOOTSTRAP_TOKEN: ${{ secrets.NPM_BOOTSTRAP_TOKEN }}
+        run: |
+          if [ "$EXISTS" = "false" ]; then
+            echo "//registry.npmjs.org/:_authToken=${NPM_BOOTSTRAP_TOKEN}" > ~/.npmrc
+          fi
+
+          npm publish --access public
+
+          if [ "$EXISTS" = "false" ]; then
+            rm ~/.npmrc
+          fi
