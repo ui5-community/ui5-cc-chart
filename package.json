@@ -8,6 +8,7 @@
     "url": "https://github.com/ui5-community/ui5-cc-chart"
   },
   "scripts": {
+    "prepare": "node ./.husky/skip.js || husky",
     "lint": "eslint .",
     "lint:staged": "lint-staged",
     "lint:commit": "commitlint -e",
