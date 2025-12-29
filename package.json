@@ -4,6 +4,9 @@
   "description": "UI5 Custom Control: Chart.js",
   "author": "UI5 Community",
   "license": "Apache-2.0",
+  "repository": {
+    "url": "https://github.com/ui5-community/ui5-cc-chart"
+  },
   "scripts": {
     "lint": "eslint .",
     "lint:staged": "lint-staged",
